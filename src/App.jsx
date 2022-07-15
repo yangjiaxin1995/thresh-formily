@@ -1,9 +1,11 @@
 import FormilyPage from './pages/FormilyPage';
+import AntdPage from './pages/AntdPage';
 
 export default function App() {
   return (
     <div>
-      <FormilyPage />
+      <AntdPage />
+      {/* <FormilyPage /> */}
     </div>
   );
 }
