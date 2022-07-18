@@ -8,7 +8,9 @@ import {
   Submit,
 } from '@/which';
 
-const form = createForm();
+const form = createForm({
+  initialValues: { name: 'hello world' },
+});
 
 const createPasswordEqualValidate = (equalName) => (field) => {
   if (
@@ -22,25 +24,29 @@ const createPasswordEqualValidate = (equalName) => (field) => {
   }
 };
 
-// 注册
-const AntdPage = (props) => {
+const CorePage = () => {
   return (
     <div>
-      <h3>AntdPage</h3>
+      <h3>CorePage</h3>
+
       <FormProvider form={form}>
         <Field
           name="name"
           title="Name"
           required
           decorator={[FormItem]}
-          component={[Input, { placeholder: 'Please Input' }]}
+          component={[Input, { placeholder: 'Please Input ur name' }]}
         />
+
         <Field
           name="password"
           title="Password"
           required
           decorator={[FormItem]}
-          component={[Input, { type: 'password', placeholder: 'Please Input' }]}
+          component={[
+            Input,
+            { type: 'password', placeholder: 'Please Input ur password' },
+          ]}
           reactions={createPasswordEqualValidate('confirm_password')}
         />
         <Field
@@ -48,19 +54,25 @@ const AntdPage = (props) => {
           title="Confirm Password"
           required
           decorator={[FormItem]}
-          component={[Input, { type: 'password', placeholder: 'Please Input' }]}
+          component={[
+            Input,
+            {
+              type: 'password',
+              placeholder: 'Please Input ur confirm_password',
+            },
+          ]}
           reactions={createPasswordEqualValidate('password')}
         />
 
         <Submit
-          onSubmit={(res) => {
-            console.log(res);
+          onSubmit={(...args) => {
+            console.log('onSubmit', args);
           }}
           onSubmitSuccess={() => {
-            console.log('omg success');
+            console.log('onSubmitSuccess');
           }}
-          onSubmitFailed={() => {
-            console.log('omg failed');
+          onSubmitFailed={(...args) => {
+            console.log('onSubmitFailed', args);
           }}
         >
           提交
@@ -73,5 +85,4 @@ const AntdPage = (props) => {
     </div>
   );
 };
-
-export default AntdPage;
+export default CorePage;

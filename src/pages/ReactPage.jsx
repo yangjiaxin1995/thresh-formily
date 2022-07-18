@@ -23,10 +23,10 @@ const createPasswordEqualValidate = (equalName) => (field) => {
 };
 
 // 注册
-const AntdPage = (props) => {
+export default function ReactPage(props) {
   return (
     <div>
-      <h3>AntdPage</h3>
+      <h3>ReactPage</h3>
       <FormProvider form={form}>
         <Field
           name="name"
@@ -35,6 +35,7 @@ const AntdPage = (props) => {
           decorator={[FormItem]}
           component={[Input, { placeholder: 'Please Input' }]}
         />
+
         <Field
           name="password"
           title="Password"
@@ -72,6 +73,4 @@ const AntdPage = (props) => {
       </FormProvider>
     </div>
   );
-};
-
-export default AntdPage;
+}

@@ -1,5 +1,12 @@
-import { createForm } from '@formily/core';
-import { observable, Tracker } from '@formily/reactive';
+// import { createForm } from '@formily/core';
+import {
+  observable,
+  Tracker,
+  batch,
+  define,
+  action,
+  toJS,
+} from '@formily/reactive';
 // import {
 //   FormProvider,
 //   Field,
@@ -7,11 +14,29 @@ import { observable, Tracker } from '@formily/reactive';
 //   FieldContext,
 //   useParentForm,
 // } from "@formily/react";
-// import { observer } from '@formily/reactive-react';
-// import { FormItem, Input, Submit } from '@formily/antd';
+// import {observer} from "@formily/reactive-react";
+// import {FormItem, Input, Submit} from "@formily/antd";
+
+import {
+  FormPath,
+  each,
+  isFn,
+  isValid,
+  isUndef,
+  isEmpty,
+  isPlainObj,
+  isNumberLike,
+  clone,
+  toArr,
+} from '@formily/shared';
+
+// todo
+import { createForm } from '@/components/my-formily/core';
 
 import { observer } from '@/components/my-formily/reactive-react';
+
 import { FormItem, Input, Submit } from '@/components/my-formily/antd';
+
 import {
   FormProvider,
   Field,
@@ -33,10 +58,25 @@ export {
   // reactive
   observable,
   Tracker,
+  batch,
+  define,
+  action,
+  toJS,
   // reactive-react
   observer,
   // antd
   FormItem,
   Input,
   Submit,
+  // shared
+  FormPath,
+  each,
+  isFn,
+  isValid,
+  isUndef,
+  isEmpty,
+  isPlainObj,
+  isNumberLike,
+  clone,
+  toArr,
 };
